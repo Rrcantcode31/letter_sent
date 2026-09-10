@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Moving Ambient Gradient Background */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(-45deg, #2b0826, #5c1d42, #80225f, #3a0d33);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    padding: 20px;
+    overflow-x: hidden;
+    cursor: pointer;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.direct-message-wrapper {
+    max-width: 580px;
+    text-align: center;
+    user-select: none;
+}
+
+.message-symbol {
+    font-size: 2.8rem;
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 25px rgba(255, 105, 180, 0.6);
+    display: inline-block;
+    margin-bottom: 10px;
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+/* Shimmering Sparkle Gradient Text */
+.sparkle-text {
+    background: linear-gradient(
+        120deg, 
+        #fff0f5 0%, 
+        #ffd700 25%, 
+        #ffffff 50%, 
+        #ffb6c1 75%, 
+        #fff0f5 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmerText 3s linear infinite;
+    filter: drop-shadow(0 2px 8px rgba(255, 182, 193, 0.4));
+}
+
+@keyframes shimmerText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); filter: drop-shadow(0 0 5px #ffd700); }
+    100% { transform: scale(1.1); filter: drop-shadow(0 0 18px #ff69b4); }
+}
+
+.message-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.6rem;
+    margin-bottom: 25px;
+}
+
+.message-text p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* Glowing Back Button */
+.btn-back {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #ffd700, #ffb6c1);
+    color: #3a0d33;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+}
+
+/* Popping Hearts Animation */
+.pop-heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.6rem;
+    z-index: 9999;
+    user-select: none;
+    animation: popAndFade 0.8s ease-out forwards;
+}
+
+@keyframes popAndFade {
+    0% {
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.4) rotate(var(--rot));
+        opacity: 0.9;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--dx) * 1.5), calc(-50% + var(--dy) * 1.5 + 20px)) scale(0.8) rotate(var(--rot));
+        opacity: 0;
+    }
+}
